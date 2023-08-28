@@ -9,13 +9,6 @@ WORKDIR /app
 COPY --from=builder /app/main .
 COPY wait-for.sh .
 
-FROM alpine:3.16
-WORKDIR /app
-
-# Copy the built binary and scripts from the builder stage
-COPY --from=builder /app/main .
-COPY wait-for.sh .
-
 # Make wait-for.sh executable
 RUN chmod +x wait-for.sh
 
